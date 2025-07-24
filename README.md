@@ -1,2 +1,2 @@
 # Portfólio Profissional
-https://grlti.github.io/geanrodrigo/
+https://grlti.github.io/geanrodrigo/portfolio
