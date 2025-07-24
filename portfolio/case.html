@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gean Rodrigo de Oliveira - Especialista em TI & Gestão Administrativa e Financeira  com mais de 20 anos de experiência">
+    <meta name="keywords" content="TI, Gestão Financeira, Tecnologia da Informação, Liderança, Análise de Dados">
+    <meta name="author" content="Gean Rodrigo de Oliveira">
+
+    <title>Gean Rodrigo - Portfolio Profissional</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Enhanced skill bars */
+        .skill-bar {
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6, #60a5fa);
+            transition: width 2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Fade in animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Styles for mobile menu toggle animation */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        #mobile-menu.active {
+            max-height: 300px; /* Adjust as needed to fit your menu content */
+            transition: max-height 0.5s ease-in;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-poppins">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50">
+        Pular para o conteúdo principal
+    </a>
+
+    <nav class="fixed w-full bg-white/95 backdrop-blur-sm shadow-lg z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl md:text-3xl font-bold text-blue-800 transition-all duration-300">
+                        Portfolio Profissional
+                    </h1>
+                </div>
+
+                <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Menu principal">
+                    <a href="index.html" class="nav-link text-blue-800 hover:text-blue-600 font-medium transition-colors duration-300">
+                        Início
+                    </a>
+                    </nav>
+
+                <button
+                    id="menu-toggle"
+                    class="md:hidden p-2 text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-colors duration-300"
+                    aria-label="Abrir menu de navegação"
+                    aria-expanded="false"
+                >
+                    <svg class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" id="menu-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg">
+            <nav class="px-4 py-4 space-y-2" role="navigation" aria-label="Menu mobile">
+                <a href="index.html" class="mobile-nav-link block py-3 px-4 text-blue-800 font-medium rounded-lg transition-colors duration-300">
+                    Início
+                </a>
+                </nav>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section id="home" class="hero-section relative min-h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="hero-bg absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700"></div>
+                <div class="absolute inset-0 bg-black/40"></div>
+              <div class="absolute inset-0 z-0 bg-[url('https://gean-rodrigo.github.io/portfolio/xadrez3.jpg')] bg-cover bg-center"></div>
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="floating-element absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full"></div>
+                    <div class="floating-element absolute top-40 right-20 w-16 h-16 bg-white/5 rounded-full"></div>
+                    <div class="floating-element absolute bottom-32 left-1/4 w-12 h-12 bg-white/10 rounded-full"></div>
+                </div>
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 text-center lg:text-left">
+                        <div class="hero-content">
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                                <span class="block">Gean Rodrigo</span>
+                                <span class="block text-blue-300">de Oliveira</span>
+                            </h1>
+                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-blue-200 mb-8">
+                                Especialista em TI & Gestão Administrativa e Financeira 
+                            </h2>
+                            <p class="text-lg sm:text-xl text-gray-200 mb-10 leading-relaxed max-w-2xl">
+                                Profissional com mais de 20 anos de experiência em gestão, liderança e tecnologia da informação,
+                                buscando otimizar processos e desenvolver soluções inovadoras.
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:w-1/2 flex justify-center">
+                     <div class="profile-image-container relative">
+                      <div class="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/30 shadow-2xl backdrop-blur-sm">
+                        <img src="https://gean-rodrigo.github.io/portfolio/Gean2.png" alt="Foto de perfil de Gean Rodrigo" class="w-full h-full object-cover object-center">
+                       </div>
+                       <div class="absolute -top-4 -right-4 w-8 h-8 bg-blue-300 rounded-full animate-pulse"></div>
+                       <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-white rounded-full animate-pulse"></div>
+                       </div>
+                       </div>
+                            </div>
+                            </div>
+                            <div class="absolute -top-4 -right-4 w-8 h-8 bg-blue-300 rounded-full animate-pulse"></div>
+                            <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-white rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+                <div class="scroll-indicator animate-bounce">
+                    <i class="fas fa-chevron-down text-white text-2xl"></i>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                </div>
+        </section>
+
+        <section id="projects" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-blue-800 mb-4">Projetos</h2>
+                    <div class="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
+                    <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                        Conheça alguns dos meus principais projetos e plataformas desenvolvidas.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="p-6">
+                            <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-4 mx-auto">
+                                <i class="fas fa-cloud text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2 text-center">GRLTI Cloud</h3>
+                            <p class="text-gray-600 mb-4 text-center">Plataforma de nuvem privada empresarial desenvolvida com Oracle Cloud Infrastructure, oferecendo serviços automatizado, sincronização de arquivos e colaboração segura.</p>
+                            <a href="https://grlticloud.ddns.com.br:83/login" target="_blank"
+                               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300">
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="p-6">
+                            <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-4 mx-auto">
+                                <i class="fas fa-laptop-code text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2 text-center">GRL Tecnologia da Informação</h3>
+                            <p class="text-gray-600 mb-4 text-center">Portal corporativo desenvolvido com foco em performance, apresentando serviços de consultoria em TI e soluções tecnológicas personalizadas para empresas.</p>
+                            <a href="https://grlti.com.br/" target="_blank"
+                               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300">
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="p-6">
+                            <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-4 mx-auto">
+                                <i class="fas fa-id-card text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2 text-center">Cartão Digital</h3>
+                            <p class="text-gray-600 mb-4 text-center">Cartão digital responsivo, integração com redes sociais, analytics de visualização e funcionalidades de networking para profissionais modernos.
+
+</p>
+                            <a href="https://gean-rodrigo.github.io/cartao/" target="_blank"
+                               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300">
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div class="p-6">
+                            <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-lg mb-4 mx-auto">
+                                <i class="fas fa-car text-blue-600 text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2 text-center">Mecânica Positiva</h3>
+                            <p class="text-gray-600 mb-4 text-center">Website institucional com sistema de agendamento online, catálogo de serviços, orçamento digital.</p>
+                            <a href="https://www.mecanicapositiva.com.br/" target="_blank"
+                               class="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center py-2 px-4 rounded-lg transition-colors duration-300">
+                                Acessar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </main>
+
+    <footer class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-bold mb-4">Gean Rodrigo de Oliveira</h3>
+                    <p class="text-blue-200 mb-4">Especialista em TI & Gestão Administrativa e Financeira </p>
+                    <p class="text-blue-300 text-sm leading-relaxed">
+                        Mais de 20 anos transformando desafios em oportunidades através da tecnologia e gestão estratégica.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <nav class="space-y-2">
+                        <a href="index.html" class="block text-blue-200 hover:text-white transition-colors duration-300">Início</a>
+                        <a href="index.html" class="block text-blue-200 hover:text-white transition-colors duration-300">Sobre</a>
+                        <a href="index.html" class="block text-blue-200 hover:text-white transition-colors duration-300">Experiência</a>
+                        <a href="index.html" class="block text-blue-200 hover:text-white transition-colors duration-300">Habilidades</a>
+                        <a href="index.html" class="block text-blue-200 hover:text-white transition-colors duration-300">Contato</a>
+                    </nav>
+                </div>
+
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <div class="space-y-2 text-blue-200">
+                        <p><i class="fas fa-map-marker-alt mr-2"></i>Teixeira de Freitas, BA</p>
+                        <p><i class="fas fa-phone mr-2"></i>(73) 99906-6900</p>
+                        <p><i class="fas fa-envelope mr-2"></i>geanrodrigo@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-blue-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-blue-200 text-sm mb-4 md:mb-0">
+                    &copy; 2025 Gean Rodrigo de Oliveira. Todos os direitos reservados.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="https://www.facebook.com/geanrodrigoti" target="_blank"
+                       class="text-blue-200 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/geanrodrigo-ti" target="_blank"
+                       class="text-blue-200 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/geanrodrigoti/" target="_blank"
+                       class="text-blue-200 hover:text-white transition-colors duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top"
+            class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-110 opacity-0 invisible">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active'); // Use 'active' class for styling
+                const isExpanded = mobileMenu.classList.contains('active');
+                this.setAttribute('aria-expanded', isExpanded);
+
+                // Animate hamburger icon
+                if (isExpanded) {
+                    menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+                } else {
+                    menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+                }
+            });
+
+            // Close mobile menu when a link is clicked
+            const mobileNavLinks = document.querySelectorAll('#mobile-menu .mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Reset to hamburger icon
+                });
+            });
+
+            // Enhanced skill bars animation
+            function animateSkillBars() {
+                const skillBars = document.querySelectorAll('.skill-progress');
+
+                skillBars.forEach((bar, index) => {
+                    const width = bar.style.width;
+                    bar.style.width = '0'; // Reset for re-animation on repeated visibility
+
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, index * 200);
+                });
+            }
+
+            // Fade in animation on scroll
+            function handleScrollAnimations() {
+                const elements = document.querySelectorAll('.fade-in');
+
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            // Enhanced intersection observer
+            const observerOptions = {
+                threshold: 0.3,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.id === 'skills') {
+                            animateSkillBars();
+                        }
+                        entry.target.classList.add('visible');
+                    } else {
+                        // Optional: remove 'visible' class when element scrolls out of view
+                        // entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all fade-in elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Observe skills section for animation (assuming you'll have a skills section with id="skills")
+            const skillsSection = document.getElementById('skills');
+            if (skillsSection) {
+                observer.observe(skillsSection);
+            }
+
+            // Initial trigger for animations
+            handleScrollAnimations();
+            window.addEventListener('scroll', handleScrollAnimations);
+        });
+
+        // Back to Top Button functionality
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // Show button after scrolling down 300px
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
