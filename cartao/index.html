@@ -24,6 +24,7 @@
             --danger: #D44638;
             --purple: #6e45e2;
             --professional: #0077B5;
+            --call: #28a745; /* Nova variável para o fundo do ícone de chamada */
         }
         
         body {
@@ -133,6 +134,7 @@
         .email .contact-icon { background-color: var(--danger); }
         .website .contact-icon { background-color: var(--purple); }
         .linkedin .contact-icon { background-color: var(--professional); }
+        .phone .contact-icon { background-color: var(--call); } /* Novo estilo para o ícone de telefone */
         
         .contact-details {
             flex: 1;
@@ -221,7 +223,20 @@
                     </div>
                     <div class="contact-details">
                         <div class="contact-label">WhatsApp</div>
-                        <div class="contact-value">73 99906-6900</div>
+                        <div class="contact-value"></div>
+                    </div>
+                    <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
+                </a>
+
+                <!-- Telefone -->
+                <a href="tel:+5573999066900" 
+                   class="contact-item phone">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Telefone</div>
+                        <div class="contact-value"></div>
                     </div>
                     <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
                 </a>
