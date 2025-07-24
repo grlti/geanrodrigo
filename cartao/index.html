@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gean Rodrigo - Analista de Sistemas</title>
+    
+    <!-- Fontes e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a0ca3;
+            --accent: #f72585;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --success: #25D366;
+            --info: #0088cc;
+            --danger: #D44638;
+            --purple: #6e45e2;
+            --professional: #0077B5;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .card {
+            width: 100%;
+            max-width: 28rem;
+            background: white;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 1.5rem 3rem -0.75rem rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 2rem 4rem -1rem rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Cabeçalho com foto ao lado do nome */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(to right, #4361ee, #3a0ca3);
+        }
+        
+        .profile-img {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            border: 0.25rem solid rgba(255, 255, 255, 0.2);
+            object-fit: cover;
+            margin-right: 1.25rem;
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.15);
+        }
+        
+        .profile-info {
+            color: white;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+        
+        .profile-title {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        /* Corpo do cartão */
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        /* Seção de contatos */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            background-color: var(--light);
+            transition: all 0.25s ease;
+            text-decoration: none;
+            color: var(--dark);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-0.1875rem);
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-icon {
+            flex-shrink: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .whatsapp .contact-icon { background-color: var(--success); }
+        .telegram .contact-icon { background-color: var(--info); }
+        .email .contact-icon { background-color: var(--danger); }
+        .website .contact-icon { background-color: var(--purple); }
+        .linkedin .contact-icon { background-color: var(--professional); }
+        
+        .contact-details {
+            flex: 1;
+            text-align: left;
+            overflow: hidden;
+        }
+        
+        .contact-label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.125rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .contact-value {
+            font-size: 0.85rem;
+            color: #6c757d;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .contact-arrow {
+            margin-left: 0.5rem;
+            color: #adb5bd;
+            font-size: 0.8rem;
+        }
+        
+        /* Rodapé */
+        .card-footer {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-align: center;
+            padding-top: 1rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .profile-header {
+                padding: 1rem;
+            }
+            
+            .profile-img {
+                width: 3.5rem;
+                height: 3.5rem;
+                margin-right: 1rem;
+            }
+            
+            .profile-name {
+                font-size: 1.25rem;
+            }
+            
+            .profile-title {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Cabeçalho com foto e nome -->
+        <div class="profile-header">
+            <img src="https://gean-rodrigo.github.io/cartao/imagem/Gean2.png" 
+                 alt="Foto de Gean Rodrigo" 
+                 class="profile-img">
+            <div class="profile-info">
+                <h1 class="profile-name">Gean Rodrigo</h1>
+                <p class="profile-title">Analista de Sistemas</p>
+            </div>
+        </div>
+        
+        <!-- Corpo do cartão -->
+        <div class="card-body">
+            <!-- Lista de contatos -->
+            <div class="contact-list">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5573999066900" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="contact-item whatsapp">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">WhatsApp</div>
+                        <div class="contact-value">73 99906-6900</div>
+                    </div>
+                    <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
+                </a>
+                
+                <!-- Telegram -->
+                <a href="https://t.me/GeanRodrigoTI" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="contact-item telegram">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram-plane" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Telegram</div>
+                        <div class="contact-value">@geanrodrigoti</div>
+                    </div>
+                    <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
+                </a>
+                
+                <!-- Email -->
+                <a href="mailto:contato@grlti.com.br" 
+                   class="contact-item email">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">contato@grlti.com.br</div>
+                    </div>
+                    <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
+                </a>
+                
+                <!-- Website -->
+                <a href="https://www.grlti.com.br" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="contact-item website">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">Website</div>
+                        <div class="contact-value">www.grlti.com.br</div>
+                    </div>
+                    <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
+                </a>
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/geanrodrigo-ti" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="contact-item linkedin">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">linkedin.com/in/geanrodrigo-ti/</div>
+                    </div>
+                    <i class="fas fa-chevron-right contact-arrow" aria-hidden="true"></i>
+                </a>
+            </div>
+            
+            <!-- Rodapé -->
+            <div class="card-footer">
+                <p>Entre em contato para projetos e colaborações</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
