@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Gean Rodrigo de Oliveira</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Fundo cinza claro */
+        }
+        /* Estilos específicos para impressão */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #ffffff;
+            }
+            .cv-container {
+                box-shadow: none !important;
+                border: 1px solid #e5e7eb;
+                margin: 0;
+                width: 100%;
+            }
+            .no-print {
+                display: none;
+            }
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-8 md:p-12">
+    <div id="cv-container" class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl overflow-hidden cv-container">
+        
+        <header class="bg-gray-800 text-white p-3 sm:p-4 text-center rounded-t-2xl">
+            <h1 class="text-xl sm:text-1xl font-bold tracking-tight mb-0.5">Gean Rodrigo de Oliveira</h1>
+            <p class="text-sm sm:text-md font-light">Especialista em TI & Gestão Administrativa e Financeira </p>
+            
+            <div class="mt-1 flex flex-col items-center justify-center space-y-0.5 text-gray-300 text-xs md:text-sm">
+                <span class="flex items-center space-x-1">
+                    <span></span>
+                    <span>Teixeira de Freitas, Bahia</span>
+                </span>
+                <a href="tel:+5573999066900" class="hover:text-white transition-colors duration-200 flex items-center space-x-1">
+                    <span></span>
+                    <span>(73) 99906-6900</span>
+                </a>
+                <a href="mailto:geanrodrigo@gmail.com" class="hover:text-white transition-colors duration-200 flex items-center space-x-1">
+                    <span></span>
+                    <span>geanrodrigo@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/geanrodrigo-ti" target="_blank" class="hover:text-white transition-colors duration-200 flex items-center space-x-1">
+                    <span></span>
+                    <span>linkedin.com/in/geanrodrigo-ti</span>
+                </a>
+            </div>
+
+            <div class="mt-2">
+                <a href="https://gean-rodrigo.github.io/portfolio" target="_blank" class="bg-indigo-600 text-white font-bold py-1.5 px-4 rounded-full shadow-lg hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 text-xs">
+                    Ver Portfólio Completo
+                </a>
+            </div>
+        </header>
+
+        <main class="p-4 sm:p-8">
+
+            <!-- Seção de QR Codes/Imagens -->
+            <section class="mb-6">
+                <div class="flex flex-row justify-center items-center gap-4">
+                    <div class="w-1/2 flex justify-center">
+                        <a href="https://linkedin.com/in/geanrodrigo-ti" target="_blank">
+                            <img src="https://gean-rodrigo.github.io/portfolio/cv/Linkedin.png" alt="QR Code do LinkedIn" class="rounded-lg shadow-md max-w-full h-auto w-20 hover:opacity-90 transition-opacity cursor-pointer">
+                        </a>
+                    </div>
+                    <div class="w-1/2 flex justify-center">
+                        <a href="https://gean-rodrigo.github.io/portfolio" target="_blank">
+                            <img src="https://gean-rodrigo.github.io/portfolio/cv/Portfolio.png" alt="QR Code do Portfólio" class="rounded-lg shadow-md max-w-full h-auto w-20 hover:opacity-90 transition-opacity cursor-pointer">
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="mb-6">
+                <h2 class="text-xl font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-3">Resumo</h2>
+                <p class="text-gray-700 leading-relaxed text-sm">Profissional com 20 anos de experiência em gestão, liderança e tecnologia da informação, especializado em otimização de processos administrativos e financeiros. Atuação sólida em operações de tesouraria e coordenação de equipes. Habilidade em análise de dados, implementação de soluções tecnológicas e mitigação de riscos financeiros, com foco em eficiência operacional e resultados estratégicos.
+</p>
+            </section>
+
+            <section class="mb-6">
+                <h2 class="text-xl font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-3">Experiência</h2>
+                
+                <div class="mb-4">
+                    <h3 class="text-md font-semibold text-gray-800">BTS Brasil Sistemas - <span class="font-normal text-gray-600">Analista de Implantação</span></h3>
+                    <p class="text-xs text-gray-500 mb-1">Junho/2022 - Junho/2023</p>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                </div>
+
+                <div class="mb-4">
+                    <h3 class="text-md font-semibold text-gray-800">ASO Vigilância e Transporte de Valores</h3>
+                    <div class="ml-4 mt-2">
+                        <p class="text-sm font-semibold text-gray-700">Analista de Tecnologia da Informação</p>
+                        <p class="text-xs text-gray-500 mb-1">Junho/2019 - Agosto/2021</p>
+                        <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                    </div>
+                    <div class="ml-4 mt-2">
+                        <p class="text-sm font-semibold text-gray-700">Supervisor de Tesouraria</p>
+                        <p class="text-xs text-gray-500 mb-1">Abril/2020 - Novembro/2020</p>
+                        <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h3 class="text-md font-semibold text-gray-800">Sicoob</h3>
+                    <div class="ml-4 mt-2">
+                        <p class="text-sm font-semibold text-gray-700">Sicoob Extremo Sul - <span class="font-normal text-gray-600">Supervisor Administrativo</span></p>
+                        <p class="text-xs text-gray-500 mb-1">Janeiro/2011 - Março/2014</p>
+                        <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                   </div>
+                    <div class="ml-4 mt-2">
+                        <p class="text-sm font-semibold text-gray-700">Sicoob Comércio - <span class="font-normal text-gray-600">Tesoureiro</span></p>
+                        <p class="text-xs text-gray-500 mb-1">Abril/2004 - Dezembro/2010</p>
+                        <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-md font-semibold text-gray-800">Supermercado Cinco Estrelas - <span class="font-normal text-gray-600">Supervisor Operacional</span></h3>
+                    <p class="text-xs text-gray-500 mb-1">Agosto/2002 - Abril/2004</p>
+                    <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                </div>
+            </section>
+            
+            <section class="mb-6">
+                <h2 class="text-xl font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-3">Formação Acadêmica</h2>
+                <ul class="list-disc list-inside text-gray-700 leading-relaxed pl-4 text-sm">
+                    <li>MBA em Finanças, Auditoria e Controladoria - Faculdade Pitágoras (Em andamento)</li>
+                    <li>MBA Executivo em Negócios - UNOPAR (2014)</li>
+                    <li>Análise e Desenvolvimento de Sistemas - UNOPAR (2013)</li>
+                    <li>Ciência da Computação - Faculdade Pitágoras (2010)</li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2 class="text-xl font-bold text-gray-800 border-b-2 border-indigo-500 pb-1 mb-3">Competências</h2>
+                
+                <h3 class="text-md font-semibold text-gray-800 mt-2 mb-1">Técnicas</h3>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Windows Server</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Linux Server</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Cloud Computing</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Virtualização</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">ERP</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Análise de Dados</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Office 365</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">LGPD</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Cybersecurity</span>
+                </div>
+                
+                <h3 class="text-md font-semibold text-gray-800 mt-4 mb-1">Comportamentais</h3>
+                <div class="flex flex-wrap gap-1">
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Liderança estratégica</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Visão analítica</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Resolução de problemas</span>
+                    <span class="bg-gray-200 text-gray-800 px-2 py-0.5 rounded-full text-xs">Orientação para resultados</span>
+                </div>
+            </section>
+            
+        </main>
+</body>
+</html>
