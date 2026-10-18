@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosperidade: Brasil 2027 - O Confronto</title>
+    <style>
+        :root {
+            --verde-brasil: #009b3a;
+            --verde-escuro: #005a22;
+            --amarelo-brasil: #ffdf00;
+            --azul-brasil: #002776;
+            --branco: #ffffff;
+            --cinza-escuro: #1a1a1a;
+            --vermelho-derrota: #d90429;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #005a22 0%, #03240f 100%);
+            min-height: 100vh;
+            color: var(--branco);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* BANDEIRA NO CANTO SUPERIOR ESQUERDO BALANÇANDO/RESPIRANDO */
+        .flag-wrapper {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .flag-svg {
+            width: 90px;
+            height: 60px;
+            filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+            transform-origin: left center;
+            animation: waveBreathe 3.5s ease-in-out infinite;
+        }
+
+        .flag-caption {
+            font-size: 0.65rem;
+            color: var(--amarelo-brasil);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 4px;
+            text-shadow: 1px 1px 3px black;
+        }
+
+        @keyframes waveBreathe {
+            0% {
+                transform: rotate(0deg) scale(1) skewY(0deg);
+            }
+            25% {
+                transform: rotate(-3deg) scale(1.04) skewY(2deg);
+            }
+            50% {
+                transform: rotate(2deg) scale(1.08) skewY(-2deg);
+            }
+            75% {
+                transform: rotate(-2deg) scale(1.03) skewY(1deg);
+            }
+            100% {
+                transform: rotate(0deg) scale(1) skewY(0deg);
+            }
+        }
+
+        /* CABEÇALHO */
+        header {
+            text-align: center;
+            margin-top: 20px;
+            padding: 0 100px;
+        }
+
+        header h1 {
+            color: var(--amarelo-brasil);
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        }
+
+        header p {
+            color: #d1ffd7;
+            font-size: 0.95rem;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* ARENA DE LUTA */
+        .arena {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            width: 92%;
+            max-width: 950px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .fighter-card {
+            background: rgba(0, 39, 118, 0.4);
+            border: 3px solid var(--amarelo-brasil);
+            border-radius: 18px;
+            padding: 20px;
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            transition: transform 0.2s ease;
+            position: relative;
+        }
+
+        .fighter-card.flavio {
+            border-color: #00ff59;
+            box-shadow: 0 0 20px rgba(0, 255, 89, 0.35);
+        }
+
+        .fighter-card.lula {
+            border-color: #ff3344;
+            box-shadow: 0 0 20px rgba(255, 51, 68, 0.35);
+        }
+
+        .avatar-box {
+            width: 170px;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid var(--amarelo-brasil);
+            margin-bottom: 15px;
+            background-color: #000;
+            position: relative;
+        }
+
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .fighter-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--amarelo-brasil);
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .fighter-role {
+            font-size: 0.75rem;
+            color: #e0e0e0;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        /* BARRA DE VIDA */
+        .hp-container {
+            width: 100%;
+            background: #222;
+            border-radius: 20px;
+            border: 2px solid #555;
+            height: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hp-bar {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #ffdf00, #00ff59);
+            transition: width 0.3s ease;
+        }
+
+        .hp-bar.lula-hp {
+            background: linear-gradient(90deg, #ff0033, #ff6b6b);
+        }
+
+        .hp-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #000;
+            text-shadow: 0 0 2px rgba(255,255,255,0.7);
+        }
+
+        .vs-badge {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--amarelo-brasil);
+            background: var(--verde-escuro);
+            padding: 12px 18px;
+            border-radius: 50%;
+            border: 3px solid var(--amarelo-brasil);
+            text-shadow: 2px 2px 0px #000;
+            box-shadow: 0 0 15px rgba(255, 223, 0, 0.6);
+            z-index: 10;
+        }
+
+        /* LOG DE BATALHA */
+        .battle-log {
+            width: 90%;
+            max-width: 650px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid var(--amarelo-brasil);
+            border-radius: 8px;
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #fffae0;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        /* PAINEL DE CONTROLES */
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            width: 90%;
+            max-width: 650px;
+            margin-bottom: 25px;
+        }
+
+        .btn-action {
+            background: linear-gradient(180deg, #009b3a, #005a22);
+            color: var(--amarelo-brasil);
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 12px 15px;
+            border: 2px solid var(--amarelo-brasil);
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-action:hover:not(:disabled) {
+            transform: translateY(-2px);
+            background: linear-gradient(180deg, #00b945, #00732b);
+            box-shadow: 0 6px 14px rgba(0, 255, 89, 0.4);
+        }
+
+        .btn-action:active:not(:disabled) {
+            transform: translateY(1px);
+        }
+
+        .btn-special {
+            grid-column: span 2;
+            background: linear-gradient(180deg, #ffdf00, #d4a700);
+            color: #003010;
+            font-size: 1.15rem;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 18px rgba(255, 223, 0, 0.75);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        .btn-special:hover:not(:disabled) {
+            background: linear-gradient(180deg, #fff36b, #ffdf00);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.9);
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+
+        /* ANIMAÇÕES DE ATAQUE */
+        .hit-anim {
+            animation: hitShake 0.35s ease;
+        }
+
+        .attack-anim {
+            animation: lungeForward 0.3s ease;
+        }
+
+        @keyframes hitShake {
+            0% { transform: translate(0, 0) scale(1); filter: brightness(2) contrast(1.5); }
+            20% { transform: translate(-10px, 5px); }
+            40% { transform: translate(12px, -8px); }
+            60% { transform: translate(-8px, 6px); }
+            80% { transform: translate(5px, -4px); }
+            100% { transform: translate(0, 0); filter: brightness(1); }
+        }
+
+        @keyframes lungeForward {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(25px); }
+            100% { transform: translateX(0); }
+        }
+
+        /* TELA DE VITÓRIA (MODAL) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 20, 5, 0.88);
+            backdrop-filter: blur(10px);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-card {
+            background: linear-gradient(135deg, #004b1c, #001f0c);
+            border: 4px solid var(--amarelo-brasil);
+            border-radius: 20px;
+            max-width: 680px;
+            width: 100%;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(0, 255, 89, 0.6);
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .modal-title {
+            color: var(--amarelo-brasil);
+            font-size: 1.85rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .modal-subtitle {
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: rgba(0, 155, 58, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            border-left: 4px solid var(--amarelo-brasil);
+        }
+
+        .pillars {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            gap: 10px;
+        }
+
+        .pillar-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--amarelo-brasil);
+            padding: 10px 12px;
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        .pillar-item h4 {
+            color: var(--amarelo-brasil);
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+
+        .pillar-item p {
+            font-size: 0.8rem;
+            color: #d8ffd9;
+        }
+
+        .motivational-box {
+            background: #002244;
+            border: 2px dashed var(--amarelo-brasil);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 22px 0;
+            color: #fff;
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .btn-restart {
+            background: var(--amarelo-brasil);
+            color: #003b14;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            border-radius: 30px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(255, 223, 0, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .btn-restart:hover {
+            transform: scale(1.06);
+            background: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .arena {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .vs-badge {
+                padding: 6px 12px;
+                font-size: 1.5rem;
+            }
+            .fighter-card {
+                width: 270px;
+                padding: 15px;
+            }
+            .avatar-box {
+                width: 140px;
+                height: 160px;
+            }
+            header {
+                padding: 0 15px;
+            }
+            header h1 {
+                font-size: 1.5rem;
+                margin-top: 60px;
+            }
+            .controls {
+                grid-template-columns: 1fr;
+            }
+            .btn-special {
+                grid-column: span 1;
+            }
+            .pillars {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BANDEIRA DO BRASIL BALANÇANDO E RESPIRANDO NO CANTO SUPERIOR ESQUERDO -->
+    <div class="flag-wrapper">
+        <svg class="flag-svg" viewBox="0 0 720 504" xmlns="http://www.w3.org/2000/svg">
+            <rect width="720" height="504" fill="#009b3a"/>
+            <polygon points="360,37.8 676.8,252 360,466.2 43.2,252" fill="#fedf00"/>
+            <circle cx="360" cy="252" r="126" fill="#002776"/>
+            <!-- Faixa branca -->
+            <path d="M 234 252 A 126 126 0 0 0 486 252 A 140 140 0 0 1 234 252" fill="#ffffff"/>
+            <!-- Estrelas simbólicas -->
+            <circle cx="360" cy="230" r="4" fill="#ffffff"/>
+            <circle cx="340" cy="265" r="4" fill="#ffffff"/>
+            <circle cx="375" cy="275" r="4" fill="#ffffff"/>
+            <circle cx="395" cy="260" r="4" fill="#ffffff"/>
+            <circle cx="360" cy="290" r="4" fill="#ffffff"/>
+            <circle cx="320" cy="280" r="4" fill="#ffffff"/>
+        </svg>
+        <span class="flag-caption">BRASIL LIVRE</span>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <h1>Prosperidade: Brasil 2027</h1>
+        <p>A reconstrução nacional com ordem, segurança, saúde e educação de qualidade</p>
+    </header>
+
+    <!-- ARENA -->
+    <div class="arena">
+        <!-- FLÁVIO BOLSONARO -->
+        <div class="fighter-card flavio" id="card-flavio">
+            <div class="avatar-box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Fl%C3%A1vio_Bolsonaro.jpg" alt="Flávio Bolsonaro" id="img-flavio">
+            </div>
+            <div class="fighter-name">Flávio Bolsonaro</div>
+            <div class="fighter-role">Esperança, Renovação & Prosperidade</div>
+            <div class="hp-container">
+                <div class="hp-bar" id="hp-flavio" style="width: 100%;"></div>
+                <div class="hp-text" id="hp-text-flavio">100 / 100</div>
+            </div>
+        </div>
+
+        <div class="vs-badge">VS</div>
+
+        <!-- LULA -->
+        <div class="fighter-card lula" id="card-lula">
+            <div class="avatar-box">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Foto_oficial_de_Luiz_In%C3%A1cio_Lula_da_Silva_%282023%E2%80%932027%29.jpg" alt="Lula" id="img-lula">
+            </div>
+            <div class="fighter-name">Lula</div>
+            <div class="fighter-role">3º Mandato • Crise & Estagnação</div>
+            <div class="hp-container">
+                <div class="hp-bar lula-hp" id="hp-lula" style="width: 100%;"></div>
+                <div class="hp-text" id="hp-text-lula">100 / 100</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LOG DE BATALHA -->
+    <div class="battle-log" id="battle-log">
+        Pressione um dos ataques para iniciar o combate pela renovação do Brasil!
+    </div>
+
+    <!-- CONTROLES -->
+    <div class="controls">
+        <button class="btn-action" onclick="playerAttack('seguranca')">
+            🛡️ Segurança Total
+        </button>
+        <button class="btn-action" onclick="playerAttack('saude')">
+            🏥 Saúde & Dignidade
+        </button>
+        <button class="btn-action" onclick="playerAttack('educacao')">
+            📚 Educação de Futuro
+        </button>
+        <button class="btn-action" onclick="playerAttack('pobreza')">
+            🇧🇷 Erradicar Extrema Pobreza
+        </button>
+        <button class="btn-action btn-special" onclick="playerAttack('especial')">
+            ⭐ Prosperidade: Brasil 2027 ⭐
+        </button>
+    </div>
+
+    <!-- MODAL DE VITÓRIA -->
+    <div class="modal-overlay" id="victory-modal">
+        <div class="modal-card">
+            <h2 class="modal-title">VITÓRIA DA NAÇÃO BRASILEIRA!</h2>
+            <div class="modal-subtitle">
+                Flavio Bolsonaro vence o confronto e livrará a nação do atraso.
+            </div>
+
+            <p style="color: #ecffe9; font-size: 0.95rem; line-height: 1.5; margin-bottom: 15px;">
+                Após o terceiro mandato deixar o país submerso em corrupção, insegurança e descontrole econômico, 
+                o Brasil agora rompe com o ciclo de retrocesso e acolhe um ciclo de dignidade e oportunidades.
+            </p>
+
+            <div class="pillars">
+                <div class="pillar-item">
+                    <h4>Segurança</h4>
+                    <p>Fim da impunidade e retomada da paz nas cidades.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>Saúde</h4>
+                    <p>Atendimento humanizado e hospitais equipados.</p>
+                </div>
+                <div class="pillar-item">
+                    <h4>Educação</h4>
+                    <p>Foco no mérito, tecnologia e futuro dos jovens.</p>
+                </div>
+            </div>
+
+            <div class="motivational-box">
+                <strong>Rumo a 2027 em diante:</strong><br>
+                "O Brasil não se rende e nunca perderá sua grandeza. De 2027 em diante, levantamos nossa bandeira verde e amarela com coragem e trabalho, superando toda extrema pobreza com liberdade, honra e prosperidade para cada família brasileira!"
+            </div>
+
+            <button class="btn-restart" onclick="restartGame()">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script>
+        // SÍNTESE DE ÁUDIO VIA WEB AUDIO API
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'hit') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(160, now);
+                osc.frequency.exponentialRampToValueAtTime(40, now + 0.18);
+                gain.gain.setValueAtTime(0.5, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.18);
+                osc.start(now);
+                osc.stop(now + 0.18);
+            } else if (type === 'special') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220, now);
+                osc.frequency.exponentialRampToValueAtTime(880, now + 0.35);
+                gain.gain.setValueAtTime(0.4, now);
+                gain.gain.linearRampToValueAtTime(0, now + 0.35);
+                osc.start(now);
+                osc.stop(now + 0.35);
+            } else if (type === 'victory') {
+                [330, 440, 550, 660, 880].forEach((freq, i) => {
+                    const noteOsc = audioCtx.createOscillator();
+                    const noteGain = audioCtx.createGain();
+                    noteOsc.connect(noteGain);
+                    noteGain.connect(audioCtx.destination);
+                    noteOsc.frequency.setValueAtTime(freq, now + (i * 0.12));
+                    noteGain.gain.setValueAtTime(0.3, now + (i * 0.12));
+                    noteGain.gain.linearRampToValueAtTime(0, now + (i * 0.12) + 0.25);
+                    noteOsc.start(now + (i * 0.12));
+                    noteOsc.stop(now + (i * 0.12) + 0.25);
+                });
+            }
+        }
+
+        // ESTADO DO JOGO
+        let lulaHp = 100;
+        let flavioHp = 100;
+        let isAttacking = false;
+
+        const hpLulaEl = document.getElementById('hp-lula');
+        const hpTextLulaEl = document.getElementById('hp-text-lula');
+        const hpFlavioEl = document.getElementById('hp-flavio');
+        const hpTextFlavioEl = document.getElementById('hp-text-flavio');
+        const logEl = document.getElementById('battle-log');
+        const cardFlavio = document.getElementById('card-flavio');
+        const cardLula = document.getElementById('card-lula');
+        const victoryModal = document.getElementById('victory-modal');
+
+        const moveData = {
+            'seguranca': {
+                name: 'Segurança Total',
+                damage: 30,
+                msg: 'Flávio avança com medidas firmes de Segurança Total, reduzindo a violência e enfraquecendo o atraso!'
+            },
+            'saude': {
+                name: 'Saúde & Dignidade',
+                damage: 32,
+                msg: 'Com planos modernos para a Saúde Pública, Flávio garante atendimento digno à população!'
+            },
+            'educacao': {
+                name: 'Educação de Futuro',
+                damage: 34,
+                msg: 'Flávio defende Educação de excelência e foco técnico, preparando as novas gerações!'
+            },
+            'pobreza': {
+                name: 'Erradicação da Extrema Pobreza',
+                damage: 40,
+                msg: 'Gerando empregos e valorizando o trabalhador, Flávio resgata milhões da pobreza!'
+            },
+            'especial': {
+                name: 'Prosperidade: Brasil 2027',
+                damage: 65,
+                msg: 'GOLPE DECISIVO! Prosperidade: Brasil 2027! Um projeto de futuro ilumina a nação!'
+            }
+        };
+
+        function playerAttack(type) {
+            if (isAttacking || lulaHp <= 0) return;
+            isAttacking = true;
+
+            const move = moveData[type];
+            logEl.innerHTML = `<strong>Flávio Bolsonaro:</strong> ${move.msg}`;
+
+            // Animação de ataque de Flávio
+            cardFlavio.classList.add('attack-anim');
+            setTimeout(() => cardFlavio.classList.remove('attack-anim'), 300);
+
+            // Lula sofre dano
+            setTimeout(() => {
+                cardLula.classList.add('hit-anim');
+                if (type === 'especial') {
+                    playSound('special');
+                } else {
+                    playSound('hit');
+                }
+
+                lulaHp = Math.max(0, lulaHp - move.damage);
+                hpLulaEl.style.width = lulaHp + '%';
+                hpTextLulaEl.innerText = `${lulaHp} / 100`;
+
+                setTimeout(() => cardLula.classList.remove('hit-anim'), 350);
+
+                if (lulaHp <= 0) {
+                    endBattle();
+                } else {
+                    // Turno inofensivo de Lula (Flávio sempre tem vantagem absoluta)
+                    setTimeout(lulaTurn, 800);
+                }
+            }, 200);
+        }
+
+        function lulaTurn() {
+            const failPhrases = [
+                "Lula tenta justificar a alta dos impostos e despesas, mas os brasileiros exigem resultados concretos!",
+                "Lula acusa o passado pelos problemas do 3º mandato, porém o argumento não surte nenhum efeito!",
+                "Lula tenta rebater, mas a população exige segurança e o avanço da economia!"
+            ];
+            const randomPhrase = failPhrases[Math.floor(Math.random() * failPhrases.length)];
+            logEl.innerHTML = `<strong>Lula:</strong> ${randomPhrase} <em>(Flávio permanece intacto!)</em>`;
+
+            // Flávio nunca perde vida significativa (mantém-se forte)
+            flavioHp = 100;
+            hpFlavioEl.style.width = '100%';
+            hpTextFlavioEl.innerText = '100 / 100';
+
+            setTimeout(() => {
+                isAttacking = false;
+            }, 600);
+        }
+
+        function endBattle() {
+            playSound('victory');
+            logEl.innerHTML = '<strong>CONFRONTO CONCLUÍDO!</strong> Flavio Bolsonaro vence o confronto e livrará a nação do atraso.';
+            setTimeout(() => {
+                victoryModal.style.display = 'flex';
+            }, 700);
+        }
+
+        function restartGame() {
+            lulaHp = 100;
+            flavioHp = 100;
+            hpLulaEl.style.width = '100%';
+            hpTextLulaEl.innerText = '100 / 100';
+            hpFlavioEl.style.width = '100%';
+            hpTextFlavioEl.innerText = '100 / 100';
+            victoryModal.style.display = 'none';
+            isAttacking = false;
+            logEl.innerHTML = 'Pressione um dos ataques para iniciar o combate pela renovação do Brasil!';
+        }
+    </script>
+</body>
+</html>
